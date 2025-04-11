@@ -17,6 +17,9 @@ def send_messages(sock):
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client.connect(('127.0.0.1', 12345))
 
+username = input("Inserisci il tuo username: ")
+client.sendall(username.encode())  # invia username al server
+
 print("Connesso al server! Scrivi i tuoi messaggi:")
 
 threading.Thread(target=receive_messages, args=(client,), daemon=True).start()
