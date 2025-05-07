@@ -6,7 +6,7 @@ from tkinter import scrolledtext, simpledialog
 class ChatClient:
     def __init__(self, master):
         self.master = master
-        self.master.title("💬 Chat Client")
+        self.master.title("Chat Client")
         self.master.configure(bg="#2b2b2b")
 
         self.chat_box = scrolledtext.ScrolledText(
