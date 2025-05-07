@@ -4,18 +4,17 @@ import tkinter as tk
 from tkinter import scrolledtext, simpledialog
 
 class ChatClient:
-    def __init__(self, master):
+    def __init__(self, master): # costruttore della classe, master è la finestra proncipale di tkinter
         self.master = master
         self.master.title("Chat Client")
         self.master.configure(bg="#2b2b2b")
 
-        self.chat_box = scrolledtext.ScrolledText(
+        self.chat_box = scrolledtext.ScrolledText( # crea un widget di testo scrolabile
             master, state='disabled', bg="#1e1e1e", fg="#dcdcdc",
             font=("Segoe UI", 10), wrap=tk.WORD, relief=tk.FLAT
         )
         self.chat_box.pack(padx=12, pady=12, fill=tk.BOTH, expand=True)
 
-        # Definizione dei tag per la formattazione
         self.chat_box.tag_config('self', foreground="#4fc3f7")   # Messaggi propri (blu chiaro)
         self.chat_box.tag_config('other', foreground="#ffffff")  # Messaggi altrui (bianco)
         self.chat_box.tag_config('error', foreground="#ff5252")  # Messaggi di errore (rosso)
@@ -38,13 +37,18 @@ class ChatClient:
         )
         self.send_button.pack(side=tk.RIGHT)
 
-        self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.sock.connect(('127.0.0.1', 12345))
+
+
+
+
+
+        self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM) # crea un socket 
+        self.sock.connect(('127.0.0.1', 12345)) # si connette al server in ascolto sulla porta 1234 (127.0.0.1 è il local host)
 
         self.username = simpledialog.askstring("Username", "Inserisci il tuo username:", parent=self.master)
-        self.sock.sendall(self.username.encode())
+        self.sock.sendall(self.username.encode()) # invia l'username appena chiesto al server
 
-        threading.Thread(target=self.receive_messages, daemon=True).start()
+        threading.Thread(target=self.receive_messages, daemon=True).start() # avvia un thread separato per poter ricevere i messaffi dal server senza bloiccare la GUI
 
     def send_message(self, event=None):
         msg = self.msg_entry.get().strip()
