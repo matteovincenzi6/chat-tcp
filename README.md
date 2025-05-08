@@ -1,3 +1,34 @@
+# Introduzione ai Socket
+
+I socket sono punti di connessione per le comunicazioni di rete che permettono a programmi di comunicare, sia sulla stessa macchina che tra computer distanti. Funzionano in modo simile ai file, con operazioni di apertura, lettura, scrittura e chiusura. Ogni socket comprende:
+
+- **Indirizzo IP**: identifica un dispositivo nella rete  
+- **Numero di Porta**: identifica uno specifico processo sulla macchina
+
+---
+
+## Il Modello Client-Server
+
+In questo paradigma, un client invia richieste a un server che fornisce il servizio desiderato:
+
+1. Il **server** crea un socket con `bind()` e si mette in ascolto con `listen()`
+2. Il **client** crea un socket e si connette con `connect()`
+3. Dopo lo scambio di dati, la connessione viene chiusa
+
+---
+
+## Protocolli UDP e TCP
+
+| Caratteristica     | UDP                        | TCP                        |
+|--------------------|----------------------------|----------------------------|
+| Connessione        | Non orientato alla connessione | Orientato alla connessione |
+| Affidabilità       | Inaffidabile               | Affidabile                 |
+| Ordine             | Non garantito              | Garantito                  |
+| Trasferimento      | Datagrammi                 | Flusso di byte             |
+| Velocità           | Maggiore                   | Minore                     |
+| Uso tipico         | Streaming, Giochi, DNS     | Web, Email, File           |
+
+
 # Chat Client-Server in Python
 
 Questa applicazione permette di creare una chat testuale multiclient, in cui più utenti possono scambiarsi messaggi in tempo reale. Il sistema è strutturato utilizzando un modello client-server, dove il server gestisce le connessioni tra i client e la comunicazione dei messaggi. La parte client include un'interfaccia grafica realizzata con Tkinter, mentre il server gestisce le connessioni multiple tramite threading.
