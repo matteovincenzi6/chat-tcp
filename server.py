@@ -18,7 +18,7 @@ def broadcast(message, sender_socket):
             except:
                 pass  # serve ad evitare crash se un client si disconnette inaspettatamente
 
-# 🔹 Gestione client
+# Gestione client
 def handle_client(client_socket, address):
     print(f"Connesso: {address}")
 
@@ -61,7 +61,7 @@ def handle_client(client_socket, address):
     usernames.pop(client_socket, None) # pop rimuove il nome utente dal client
     client_socket.close() 
 
-# 🔸 Avvio server
+# Avvio server
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM) #crea un nuovo soket tcp
 server.bind(('0.0.0.0', 12345)) # 0.0.0.0 significa che il server accetta connessioni da qualsiasi IP
 server.listen()
