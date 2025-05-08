@@ -5,8 +5,6 @@ I socket sono punti di connessione per le comunicazioni di rete che permettono a
 - **Indirizzo IP**: identifica un dispositivo nella rete  
 - **Numero di Porta**: identifica uno specifico processo sulla macchina
 
----
-
 ## Il Modello Client-Server
 
 In questo paradigma, un client invia richieste a un server che fornisce il servizio desiderato:
@@ -15,7 +13,6 @@ In questo paradigma, un client invia richieste a un server che fornisce il servi
 2. Il **client** crea un socket e si connette con `connect()`
 3. Dopo lo scambio di dati, la connessione viene chiusa
 
----
 
 ## Protocolli UDP e TCP
 
